@@ -1,6 +1,5 @@
 <br />
-
-![tailwindy-components](https://user-images.githubusercontent.com/1549069/225756692-dad51108-8b99-4267-90a1-a8b1bc61afee.svg)
+<img src="https://user-images.githubusercontent.com/1549069/225756692-dad51108-8b99-4267-90a1-a8b1bc61afee.svg"  width="40%">
 
 <br />
 <br />
