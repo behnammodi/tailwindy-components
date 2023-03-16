@@ -77,3 +77,5 @@ export const Name = tailwindy.div`text-sky-500 dark:text-sky-400`;
 
 export const Rule = tailwindy.div`text-slate-700 dark:text-slate-500`;
 ```
+
+[Edit on Codesandbox](https://codesandbox.io/s/tailwindy-example-1-ezzokr)
