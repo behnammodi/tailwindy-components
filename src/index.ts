@@ -47,7 +47,7 @@ const createTailwindyComponents = (tags: typeof elements) => {
     return !!(element as any).__TAILWINDY__;
   };
 
-  const cleanUp = (classes: string) => classes.match(/[\w-:]+/g)?.join(' ');
+  const cleanUp = (classes: string) => classes.match(/[\w-:.]+/g)?.join(' ');
 
   const tailwindy: TailwindyConstructor = element => ([classes]) =>
     isTailwindyComponent(element)
