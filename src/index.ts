@@ -48,11 +48,7 @@ const createTailwindyComponents = (tags: typeof elements) => {
   };
 
   const cleanUp = (classes: string) =>
-    classes
-      .trim()
-      .split(/\n/)
-      .map(cl => cl.trim())
-      .join(' ');
+    classes.match(/[\w-:]+/g)?.join(' ');
 
   const tailwindy: TailwindyConstructor = element => ([classes]) =>
     isTailwindyComponent(element)
