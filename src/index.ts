@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import type { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { elements } from './elements';
 
 type TailwindyComponent = FunctionComponent & {
@@ -26,7 +26,7 @@ const createTailwindyComponents = (tags: typeof elements) => {
     const cls = cleanUp(classes);
 
     const Component = ({ className, ...props }: { className: string }) => {
-      const cn = `${cls} ${className}`;
+      const cn = `${cls}${className ? ' ' + className : ''}`;
 
       return createElement(element, {
         className: cn,
@@ -47,14 +47,13 @@ const createTailwindyComponents = (tags: typeof elements) => {
     return !!(element as any).__TAILWINDY__;
   };
 
-  const cleanUp = (classes: string) =>
-    classes.match(/[\w-:]+/g)?.join(' ');
+  const cleanUp = (classes: string) => classes.match(/[\w-:]+/g)?.join(' ');
 
   const tailwindy: TailwindyConstructor = element => ([classes]) =>
     isTailwindyComponent(element)
       ? createTailwindy(element.__TAILWINDY__.element)(
-        `${element.__TAILWINDY__.classes} ${classes}`
-      )
+          `${element.__TAILWINDY__.classes} ${classes}`
+        )
       : createTailwindy(element)(classes);
 
   tags.forEach((element: string) => {
