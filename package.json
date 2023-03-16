@@ -1,6 +1,6 @@
 {
   "name": "tailwindy-components",
-  "version": "1.0.0-1",
+  "version": "1.0.0-2",
   "description": "tailwindy-components",
   "main": "dist/index.js",
   "scripts": {
