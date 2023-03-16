@@ -1,16 +1,52 @@
 {
-  "name": "tailwindy-components",
   "version": "1.0.4",
-  "description": "tailwindy-components",
+  "license": "MIT",
   "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "test": "exit 0",
-    "preversion": "yarn test",
-    "postversion": "npm publish",
-    "prepublishOnly": "yarn test && yarn build",
-    "postpublish": "git push && git push --tags"
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
   },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "tailwindy-components",
+  "author": "Behnam Mohammadi",
+  "description": "tailwindy-components",
+  "module": "dist/tailwindy-components.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/tailwindy-components.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/tailwindy-components.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/behnammodi/tailwindy-components.git"
@@ -19,18 +55,20 @@
     "tailwindcss",
     "tailwindy-components"
   ],
-  "author": "Behnam Mohammadi",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/behnammodi/tailwindy-components/issues"
   },
   "homepage": "https://github.com/behnammodi/tailwindy-components#readme",
   "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.2.4",
     "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "husky": "^8.0.3",
     "react": "^18.2.0",
-    "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "size-limit": "^8.2.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.2"
   }
 }

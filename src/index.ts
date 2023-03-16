@@ -1,6 +1,6 @@
-import { createElement } from "react";
-import type { FunctionComponent } from "react";
-import { elements } from "./elements";
+import { createElement } from 'react';
+import type { FunctionComponent } from 'react';
+import { elements } from './elements';
 
 type TailwindyComponent = FunctionComponent & {
   __TAILWINDY__: {
@@ -21,27 +21,24 @@ export type TailwindyConstructor = (
 
 export type Tailwindy = TailwindyConstructor & TailwindyElements;
 
-const createTailwindyComponents = (elements) => {
-  const createTailwindy = (element) => (classes: string) => {
-    const Component: TailwindyComponent = ({
-      className,
-      ...props
-    }: {
-      className: string;
-    }) => {
-      const cn = `${classes} ${className}`;
+const createTailwindyComponents = (tags: typeof elements) => {
+  const createTailwindy = (element: any) => (classes: string) => {
+    const cls = cleanUp(classes);
+
+    const Component = ({ className, ...props }: { className: string }) => {
+      const cn = `${cls} ${className}`;
 
       return createElement(element, {
-        className: cn,
+        cls: cn,
         ...props,
       });
     };
 
     Component.__TAILWINDY__ = {
-      classes,
+      classes: cls,
     };
 
-    return Component as unknown as TailwindyComponent;
+    return (Component as unknown) as TailwindyComponent;
   };
 
   const isTailwindyComponent = (
@@ -50,17 +47,22 @@ const createTailwindyComponents = (elements) => {
     return !!(element as any).__TAILWINDY__;
   };
 
-  const tailwindy: TailwindyConstructor =
-    (element) =>
-    ([classes]: TemplateStringsArray) =>
-      isTailwindyComponent(element)
-        ? createTailwindy(element.__TAILWINDY__.element)(
-            `${element.__TAILWINDY__.classes} ${classes}`
-          )
-        : createTailwindy(element)(classes);
+  const cleanUp = (classes: string) =>
+    classes
+      .trim()
+      .split(/\n/)
+      .map(cl => cl.trim())
+      .join(' ');
 
-  elements.forEach((element) => {
-    tailwindy[element] = ([classes]: TemplateStringsArray) =>
+  const tailwindy: TailwindyConstructor = element => ([classes]) =>
+    isTailwindyComponent(element)
+      ? createTailwindy(element.__TAILWINDY__.element)(
+        `${element.__TAILWINDY__.classes} ${classes}`
+      )
+      : createTailwindy(element)(classes);
+
+  tags.forEach((element: string) => {
+    (tailwindy as any)[element] = ([classes]: TemplateStringsArray) =>
       createTailwindy(element)(classes);
   });
 
