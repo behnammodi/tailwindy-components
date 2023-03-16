@@ -1,33 +1,27 @@
-import { createElement } from "react";
+import { createElement, ReactElement } from "react";
 import type { ReactNode } from "react";
 
-type TailwindyComponent = React.CElement<
-  {
-    className: string;
-  },
-  React.Component<
-    {
-      className: string;
-    },
-    any,
-    any
-  >
-> & {
+type TailwindyComponent = ReactNode & {
   __TAILWINDY__: {
     classes: string;
     element: ReactNode;
   };
 };
 
-// type Tailwindy = ((
-//   element: ReactNode | TailwindyComponent
-// ) => ([classes]: TemplateStringsArray) => TailwindyComponent) &
-//   JSX.IntrinsicElements;
+export type TailwindyElements = {
+  [K in typeof elements[number]]: ([
+    classes,
+  ]: TemplateStringsArray) => ReactElement<JSX.IntrinsicElements[K]>;
+};
 
-// type [E in keyof JSX.IntrinsicElements]: Styled<'web', E, JSX.IntrinsicElements[E]>
+export type TailwindyConstructor = (
+  element: ReactElement | TailwindyComponent
+) => ([classes]: TemplateStringsArray) => TailwindyComponent;
 
-function createTailwindyComponents(elements) {
-  function createTailwindy(element, classes: string) {
+export type Tailwindy = TailwindyConstructor & TailwindyElements;
+
+const createTailwindyComponents = (elements) => {
+  const createTailwindy = (element) => (classes: string) => {
     function Component({ className, ...props }: { className: string }) {
       const cn = `${classes} ${className}`;
 
@@ -41,31 +35,31 @@ function createTailwindyComponents(elements) {
       classes,
     };
 
-    return Component;
-  }
+    return Component as unknown as TailwindyComponent;
+  };
 
-  function isTailwindyComponent(element: any): element is TailwindyComponent {
+  const isTailwindyComponent = (
+    element: any
+  ): element is TailwindyComponent => {
     return !!(element as any).__TAILWINDY__;
-  }
+  };
 
-  function tailwindy(element: ReactNode | TailwindyComponent) {
-    if (isTailwindyComponent(element)) {
-      return (classes) =>
-        createTailwindy(
-          element.__TAILWINDY__.element,
-          `${element.__TAILWINDY__.classes} ${classes}`
-        );
-    }
-
-    return (classes) => createTailwindy(element, classes);
-  }
+  const tailwindy: TailwindyConstructor =
+    (element) =>
+    ([classes]: TemplateStringsArray) =>
+      isTailwindyComponent(element)
+        ? createTailwindy(element.__TAILWINDY__.element)(
+            `${element.__TAILWINDY__.classes} ${classes}`
+          )
+        : createTailwindy(element)(classes);
 
   elements.forEach((element) => {
-    tailwindy[element] = ([classes]) => createTailwindy(element, classes);
+    tailwindy[element] = ([classes]: TemplateStringsArray) =>
+      createTailwindy(element)(classes);
   });
 
-  return tailwindy;
-}
+  return tailwindy as Tailwindy;
+};
 
 const elements = [
   "a",
