@@ -1,6 +1,6 @@
 ## tailwindy-components
 
-To readability of tailwindcss
+A library to improve readability of [tailwindcss](https://tailwindcss.com/) classes
 
 ### Install
 
@@ -79,3 +79,17 @@ export const Rule = tailwindy.div`text-slate-700 dark:text-slate-500`;
 ```
 
 [Edit on Codesandbox](https://codesandbox.io/s/tailwindy-example-1-ezzokr)
+
+---
+
+```
+tailwindy-components
+
+A library to improve readability of tailwindcss classes
+```
+
+```
+tailwindcss:
+
+A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+```
