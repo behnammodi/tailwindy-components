@@ -1,0 +1,36 @@
+{
+  "name": "tailwindy-components",
+  "version": "0.0.0",
+  "description": "tailwindy-components",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "exit 0",
+    "preversion": "yarn test",
+    "postversion": "npm publish",
+    "prepublishOnly": "yarn test && yarn build",
+    "postpublish": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behnammodi/tailwindy-components.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "tailwindy-components"
+  ],
+  "author": "Behnam Mohammadi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/behnammodi/tailwindy-components/issues"
+  },
+  "homepage": "https://github.com/behnammodi/tailwindy-components#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "react": "^18.2.0",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
