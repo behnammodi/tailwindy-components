@@ -38,7 +38,7 @@
   },
   "name": "tailwindy-components",
   "author": "Behnam Mohammadi",
-  "description": "tailwindy-components",
+  "description": "A library to improve readability of tailwindcss classes",
   "module": "dist/tailwindy-components.esm.js",
   "size-limit": [
     {
