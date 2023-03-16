@@ -61,21 +61,53 @@ We can write something like this:
 
 ```js
 // styles.js
-import tailwindy from "tailwindy-components";
+import tailwindy from 'tailwindy-components';
 
-export const Card = tailwindy.figure`md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800`;
+export const Card = tailwindy.figure`
+  md:flex
+  bg-slate-100
+  rounded-xl
+  p-8
+  md:p-0
+  dark:bg-slate-800
+`;
 
-export const Logo = tailwindy.img`w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto`;
+export const Logo = tailwindy.img`
+  w-24
+  h-24
+  md:w-48
+  md:h-auto
+  md:rounded-none
+  rounded-full
+  mx-auto
+`;
 
-export const Container = tailwindy.div`pt-6 md:p-8 text-center md:text-left space-y-4`;
+export const Container = tailwindy.div`
+  pt-6
+  md:p-8
+  text-center
+  md:text-left
+  space-y-4
+`;
 
-export const Text = tailwindy.p`text-lg font-medium`;
+export const Text = tailwindy.p`
+  text-lg
+  font-medium
+`;
 
-export const Caption = tailwindy.figcaption`font-medium`;
+export const Caption = tailwindy.figcaption`
+  font-medium
+`;
 
-export const Name = tailwindy.div`text-sky-500 dark:text-sky-400`;
+export const Name = tailwindy.div`
+  text-sky-500
+  dark:text-sky-400
+`;
 
-export const Rule = tailwindy.div`text-slate-700 dark:text-slate-500`;
+export const Rule = tailwindy.div`
+  text-slate-700
+  dark:text-slate-500
+`;
 ```
 
 [Edit on Codesandbox](https://codesandbox.io/s/tailwindy-example-1-ezzokr)
