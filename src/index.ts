@@ -29,7 +29,7 @@ const createTailwindyComponents = (tags: typeof elements) => {
       const cn = `${cls} ${className}`;
 
       return createElement(element, {
-        cls: cn,
+        className: cn,
         ...props,
       });
     };
