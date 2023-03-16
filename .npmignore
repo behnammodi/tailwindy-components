@@ -1,11 +1,8 @@
 node_modules
-
 src
-
 tsconfig.json
 
 *.log
 .DS_Store
-node_modules
 .cache
-dist
+
