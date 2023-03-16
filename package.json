@@ -17,7 +17,10 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "preversion": "yarn build",
+    "postversion": "npm publish",
+    "postpublish": "git push && git push --tags"
   },
   "peerDependencies": {
     "react": ">=16"
