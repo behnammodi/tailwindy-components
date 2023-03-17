@@ -125,7 +125,6 @@ export const Rule = tailwindy.div`
 tailwindy-components
 
 ```
-
 A library to improve readability of tailwindcss classes
 ```
 
