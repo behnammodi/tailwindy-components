@@ -1,9 +1,9 @@
-import React from "react";
-import { renderToString } from "react-dom/server";
-import tailwindy from "../src/index";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import tailwindy from '../src/index';
 
-describe("test tailwindy", () => {
-  test("should return", () => {
+describe('test tailwindy', () => {
+  test('should return', () => {
     const Title = tailwindy.div`
       inline-block
       text-2xl
@@ -16,8 +16,6 @@ describe("test tailwindy", () => {
 
     const html = renderToString(<Title />);
 
-    expect(html).toBe("");
+    expect(html).toBe('');
   });
 });
-
-
