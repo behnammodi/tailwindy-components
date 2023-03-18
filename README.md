@@ -50,11 +50,11 @@ We can write something like this:
   <Logo src="/sarah-dayan.jpg" alt="" width="384" height="512" />
   <Container>
     <blockquote>
-      <Text>
+      <Quote>
       “Tailwind CSS is the only framework that I've seen scale
         on large teams. It’s easy to customize, adapts to any design,
         and the build size is tiny.”
-      </Text>
+      </Quote>
     </blockquote>
     <Caption>
       <Name>Sarah Dayan</Name>
@@ -95,7 +95,7 @@ export const Container = tailwindy.div`
   space-y-4
 `;
 
-export const Text = tailwindy.p`
+export const Quote = tailwindy.p`
   text-lg
   font-medium
 `;
