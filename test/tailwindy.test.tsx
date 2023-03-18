@@ -16,7 +16,9 @@ describe('test tailwindy', () => {
 
     const html = renderToString(<Component />);
 
-    expect(html).toBe('<div class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"></div>');
+    expect(html).toBe(
+      '<div class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200"></div>'
+    );
   });
 
   test('should return a div without class prop', () => {
@@ -30,7 +32,7 @@ describe('test tailwindy', () => {
   test('should return a div with a css class', () => {
     const Component = tailwindy.div``;
 
-    const html = renderToString(<Component className='custom' />);
+    const html = renderToString(<Component className="custom" />);
 
     expect(html).toBe('<div class="custom"></div>');
   });
@@ -41,9 +43,11 @@ describe('test tailwindy', () => {
       tracking-tight
     `;
 
-    const html = renderToString(<Component className='custom' />);
+    const html = renderToString(<Component className="custom" />);
 
-    expect(html).toBe('<div class="text-slate-900 tracking-tight custom"></div>');
+    expect(html).toBe(
+      '<div class="text-slate-900 tracking-tight custom"></div>'
+    );
   });
 
   test('should return a figure tag', () => {
