@@ -5,15 +5,19 @@
 
 ## tailwindy-components
 
-A library to improve readability of [tailwindcss](https://tailwindcss.com/) classes
+`tailwindy-components` is a utility library that provides a way to create [tailwindcss](https://tailwindcss.com/) classes using tagged templates.
 
 ### Install
+
+To install `tailwindy-components`, you can use the following command:
 
 ```bash
 npm install tailwindy-components
 or
 yarn add tailwindy-components
 ```
+
+Keep in mind that tailwindy-components requires `React` to be installed as peer dependency.
 
 ## Example:
 
