@@ -26,10 +26,10 @@ const createTailwindyComponents = (tags: typeof elements) => {
     const cls = cleanUp(classes);
 
     const Component = ({ className, ...props }: { className: string }) => {
-      const cn = `${cls}${className ? ' ' + className : ''}`;
+      const cn = `${cls}${className ? (cls ? ' ' : '') + className : ''}`;
 
       return createElement(element, {
-        className: cn,
+        ...(cn && { className: cn }),
         ...props,
       });
     };
@@ -47,7 +47,8 @@ const createTailwindyComponents = (tags: typeof elements) => {
     return !!(element as any).__TAILWINDY__;
   };
 
-  const cleanUp = (classes: string) => classes.match(/[\w-:.]+/g)?.join(' ');
+  const cleanUp = (classes: string) =>
+    classes.match(/[\w-:.]+/g)?.join(' ') || '';
 
   const tailwindy: TailwindyConstructor = element => ([classes]) =>
     isTailwindyComponent(element)
